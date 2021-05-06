@@ -11,19 +11,17 @@ public class Phonebook {
         phonebook.put(phoneNumber, surname);
     }
 
+    /**
+     * Поиск всех имеющихся телефонных номеров для заданной фамилии
+     * @param surname
+     */
     private static void findPhoneNumber(String surname){
-        List<Integer> numbers = new ArrayList<>();
-        Integer phoneNumber = 0;
-        for (Integer n : phonebook.keySet()) {
-            if (phonebook.get(n).equals(surname) )  {
-                phoneNumber = n;
-                numbers.add(phoneNumber);
+        System.out.print("Surname: " + surname);
+        System.out.print(" Phone number:");
+        for (Map.Entry<Integer, String> o : phonebook.entrySet()) {
+            if (o.getValue().equals(surname) )  {
+                System.out.print(" " + o.getKey() + "/");
             }
-        }
-        System.out.print("Surname: " + phonebook.get(phoneNumber));
-        System.out.print(" Phone number: ");
-        for (int i = 0; i < numbers.size(); i++){
-            System.out.print(" " + numbers.get(i) + "/");
         }
         System.out.println();
     }
@@ -37,6 +35,8 @@ public class Phonebook {
         add(64782467, "Sidorov");
         add(16351735, "Rogov");
         add(41236187, "Ivanov");
+
+
 
         findPhoneNumber("Ivanov");
         findPhoneNumber("Petrov");
